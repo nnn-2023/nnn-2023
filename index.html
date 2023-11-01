@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Nut Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-black">
+    <header class="flex flex-row items-center bg-[#0e0e0e] p-8 gap-4">
+      <i class="text-3xl text-[#ff9900] fa-solid fa-bars"></i>
+      <h1 class="text-4xl text-white font-semibold">
+        NoNut<span
+          class="ml-0.5 bg-[#ff9900] px-1 p-1.5 rounded text-neutral-950"
+          >Test</span
+        >
+      </h1>
+    </header>
+    <main class="px-8">
+      <div class="max-w-5xl mx-auto flex flex-col text-center">
+        <h2
+          id="question"
+          class="text-3xl text-white font-semibold p-8 mt-8"
+        ></h2>
+        <ul
+          id="answers"
+          class="max-w-xl w-full mx-auto text-2xl text-zinc-200 font-medium py-4"
+        ></ul>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    let questions = [
+      {
+        question:
+          "Tu restes passif devant un écran à consommer du contenu alors que tu as des choses plus importantes à faire",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question:
+          "Tu passes plus de temps à regarder du porn qu'à interagir avec des filles dans la vraie vie",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question: "Tu as le sentiment que le porn fait chuter ta productivité",
+        options: ["Non", "Oui"],
+      },
+      {
+        question:
+          "Tu passes une demi heure à chercher la vidéo parfaite puis tu lâches la purée en moins de 2 minutes",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question: "Tu as consulté du porn avant d'avoir l'âge légal 👀",
+        options: ["Non", "Oui"],
+      },
+      {
+        question:
+          "Tu perds la notion du temps quand tu commences à regarder du porn",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question: "Tu as regardé plus de 1000 vidéos au cours de ta vie",
+        options: ["Non", "Oui"],
+      },
+      {
+        question: "Il t'arrive de rêver que tu regardes du porn",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question:
+          "Tu sues à grosses gouttes en imaginant que quelqu'un découvrent ton véritable historique de navigation",
+        options: ["Non", "Oui"],
+      },
+      {
+        question: "Tu n'arrivent plus à bander devant du contenu soft",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question:
+          "Tu connais plus de détails à propos de de la vie certaines actrices que sur celles de tes arrières grands-parents",
+        options: ["Non", "Oui"],
+      },
+      {
+        question:
+          "Tu reconnais certaines actrices juste en regardant la forme de leurs fesses",
+        options: ["Non", "Oui"],
+      },
+      {
+        question: "Tu regardes du porn en dehors de chez toi",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question: "Tu possèdes un compte Pornhub premium ?",
+        options: ["Non", "Oui"],
+      },
+      {
+        question: "Tu es excité par des trucs bizarres (pieds, aisselles, ...)",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question:
+          "Tu continues à regarder du porn même lorsque ça a des conséquences négatives sur ta vie",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+      {
+        question: "Tu es amoureux d'une waifu",
+        options: ["Non", "Oui"],
+      },
+      {
+        question:
+          "Il t'arrive de passer plus d'une semaine sans regarder de porn et sans que ça te demande d'effort particulier",
+        options: ["Jamais", "Rarement", "Parfois", "Souvent"],
+      },
+      {
+        question:
+          "Si tes proches connaissaient le genre de vidéos que tu regardes, ils ne t'adresseraient plus la parole",
+        options: ["Non", "Oui"],
+      },
+      {
+        question: "Tu as déjà consulté du contenu illégal 👀",
+        options: ["Jamais", "Rarement", "Parfois", "Tous les jours"],
+      },
+    ];
+
+    let curr = -1;
+    var score = 0;
+    let out = "";
+
+    qu = document.getElementById("question");
+    an = document.querySelector("#answers");
+
+    function updateQuestions(i) {
+      score += i;
+      if (curr === 19) {
+        let percentage = Math.round((score / 42) * 100);
+        console.log(score);
+        let proba = "Faible";
+        if (percentage > 30) proba = "Modérée";
+        if (percentage > 40) proba = "Moyenne";
+        if (percentage > 50) proba = "Élevée";
+        if (percentage > 70) proba = "Très élevée";
+        console.log(proba);
+        qu.innerHTML = `<h1 class="text-4xl text-white font-semibold">
+        NoNut<span
+          class="ml-0.5 bg-[#ff9900] px-1 p-1.5 rounded text-neutral-950"
+          >Test</span
+        >
+      </h1><h2
+          id="question"
+          class="text-3xl text-white font-semibold p-8 mt-8"
+        >Cerveau ravagé à <span class="text-red-500">${percentage} %</span>
+        </h2>`;
+        out = `<div class="flex flex-col items-center p-4 bg-[#0e0e0e] rounded">
+        <p>Probabilité d'aller en enfer</p>
+        <p>${proba}</p>
+       </div>
+       <div class="flex flex-col gap-2 items-center mt-8 max-w-xl w-full">
+        <h3 class="text-3xl text-white font-semibold p-8 mt-8">
+          Tu veux une méthode simple pour arrêter ?
+        </h3>
+        <a
+          target="_blank"
+          href="https://discord.gg/6JZpaJ45Hy"
+          class="w-full p-4 bg-[#0e0e0e] hover:bg-[#ff9900] hover:text-zinc-950 duration-300 rounded cursor-pointer"
+          >Oui</a
+        >
+        <a
+          target="_blank"
+          href="https://pornhub.com"
+          class="mt-2 w-full p-4 bg-[#0e0e0e] hover:bg-[#ff9900] hover:text-zinc-950 duration-300 rounded cursor-pointer"
+          >Non</a
+        >
+      </div>`;
+        console.log(score);
+      } else {
+        curr += 1;
+        out = `<ul
+          id="answers"
+          class="max-w-xl w-full flex flex-col gap-4 mx-auto text-2xl text-zinc-200 font-medium py-4"
+        >`;
+
+        qu.innerText = questions[curr].question;
+
+        let i = -1;
+        questions[curr].options.forEach((answer) => {
+          i += 1;
+
+          out += `<button
+            onclick="updateQuestions(${i})"
+            class="p-4 bg-[#0e0e0e] hover:bg-[#ff9900] hover:text-zinc-950 duration-300 rounded cursor-pointer"
+          >
+            ${answer}
+          </button>`;
+        });
+
+        out += `</ul>`;
+      }
+      an.innerHTML = out;
+    }
+
+    updateQuestions(0);
+  </script>
+</html>
